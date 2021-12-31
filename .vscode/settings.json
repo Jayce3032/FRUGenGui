@@ -1,5 +1,16 @@
 {
     "files.associations": {
-        "qtwidgets": "cpp"
+        "qtwidgets": "cpp",
+        "endian.h": "c",
+        "features.h": "c",
+        "stdlib.h": "c",
+        "cerrno": "cpp",
+        "*.tcc": "cpp",
+        "rope": "cpp",
+        "ostream": "cpp",
+        "locale": "cpp",
+        "bitset": "cpp",
+        "__tree": "cpp",
+        "set": "cpp"
     }
 }
