@@ -52,6 +52,11 @@
 #define WINDOW_H
 
 #include <QWidget>
+#include "qdatetimeedit.h"
+#include "qcheckbox.h"
+#include "qpushbutton.h"
+#include "qfiledialog.h"
+#include "qtablewidget.h"
 
 QT_BEGIN_NAMESPACE
 class QComboBox;
@@ -67,19 +72,63 @@ public:
     Window();
 
 public slots:
-    void echoChanged(int);
-    void validatorChanged(int);
-    void alignmentChanged(int);
-    void inputMaskChanged(int);
-    void accessChanged(int);
+    void generateButtonClick();
+    void browse();
+    void uploadFile();
+    void parseFile();
+    void exportFile();
+    void aboutMenuTrigerred(QAction* action);
+    void chassisSelectStateChanged(int state);
+    void boardSelectStateChanged(int state);
+    void productSelectStateChanged(int state);
 
 private:
+    const QString configName = "config.ini";
+    QComboBox *createComboBox(const QString &text = QString());
+    /**
+     * @brief chassis info area
+     */
+    QCheckBox *chassisSelect;
+    QComboBox *chassisTypeComboBox;
     QLineEdit *chassisPNEdit;
     QLineEdit *chassisSNEdit;
-    QLineEdit *validatorLineEdit;
-    QLineEdit *alignmentLineEdit;
-    QLineEdit *inputMaskLineEdit;
-    QLineEdit *accessLineEdit;
+    /**
+     * @brief board info area
+     */
+    QCheckBox *boardSelect;
+    QDateTimeEdit *boardDateLineEdit;
+    QLineEdit *boardMfgLineEdit;
+    QLineEdit *boardPnameLineEdit;
+    QLineEdit *boardSerialLineEdit;
+    QLineEdit *boardPnLineEdit;
+    QLineEdit *boardFileLineEdit;
+    /**
+     * @brief product info area
+     */
+    QCheckBox *productSelect;
+    QLineEdit *productMfgLineEdit;
+    QLineEdit *productPnameLineEdit;
+    QLineEdit *productPartNumLineEdit;
+    QLineEdit *productVersionLineEdit;
+    QLineEdit *productSerialLineEdit;
+    QLineEdit *productAtagLineEdit;
+    QLineEdit *productFileLineEdit;
+
+    /**
+     * @brief generate
+     */
+    QComboBox *directoryComboBox;
+    QLineEdit *fileName;
+
+    /**
+     * @brief upload
+     */
+    QLineEdit *uploadFileLineEdit;
+    QTableWidget *fruList;
+
+    void loadConfig();
+    void writeConfig();
+    int exportFileToedit = 0;
 };
 //! [0]
 

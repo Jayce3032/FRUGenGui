@@ -55,14 +55,14 @@
 //! [0]
 Window::Window()
 {
-    QGroupBox *echoGroup = new QGroupBox(tr("Echo"));
+    QGroupBox *chassisGroup = new QGroupBox(tr("ChassisInfo"));
 
     QLabel *echoLabel = new QLabel(tr("Mode:"));
-    QComboBox *echoComboBox = new QComboBox;
-    echoComboBox->addItem(tr("Normal"));
-    echoComboBox->addItem(tr("Password"));
-    echoComboBox->addItem(tr("PasswordEchoOnEdit"));
-    echoComboBox->addItem(tr("No Echo"));
+    QComboBox *chassisTypeComboBox = new QComboBox;
+    chassisTypeComboBox->addItem(tr("Normal"));
+    chassisTypeComboBox->addItem(tr("Password"));
+    chassisTypeComboBox->addItem(tr("PasswordEchoOnEdit"));
+    chassisTypeComboBox->addItem(tr("No Echo"));
 
     echoLineEdit = new QLineEdit;
     echoLineEdit->setPlaceholderText("Placeholder Text");
@@ -70,7 +70,7 @@ Window::Window()
 //! [0]
 
 //! [1]
-    QGroupBox *validatorGroup = new QGroupBox(tr("Validator"));
+    QGroupBox *boardGroup = new QGroupBox(tr("Validator"));
 
     QLabel *validatorLabel = new QLabel(tr("Type:"));
     QComboBox *validatorComboBox = new QComboBox;
@@ -122,7 +122,7 @@ Window::Window()
 //! [4]
 
 //! [5]
-    connect(echoComboBox, SIGNAL(activated(int)),
+    connect(chassisTypeComboBox, SIGNAL(activated(int)),
             this, SLOT(echoChanged(int)));
     connect(validatorComboBox, SIGNAL(activated(int)),
             this, SLOT(validatorChanged(int)));
@@ -135,19 +135,19 @@ Window::Window()
 //! [5]
 
 //! [6]
-    QGridLayout *echoLayout = new QGridLayout;
-    echoLayout->addWidget(echoLabel, 0, 0);
-    echoLayout->addWidget(echoComboBox, 0, 1);
-    echoLayout->addWidget(echoLineEdit, 1, 0, 1, 2);
-    echoGroup->setLayout(echoLayout);
+    QGridLayout *chassisLayout = new QGridLayout;
+    chassisLayout->addWidget(echoLabel, 0, 0);
+    chassisLayout->addWidget(chassisTypeComboBox, 0, 1);
+    chassisLayout->addWidget(echoLineEdit, 1, 0, 1, 2);
+    chassisGroup->setLayout(chassisLayout);
 //! [6]
 
 //! [7]
-    QGridLayout *validatorLayout = new QGridLayout;
-    validatorLayout->addWidget(validatorLabel, 0, 0);
-    validatorLayout->addWidget(validatorComboBox, 0, 1);
-    validatorLayout->addWidget(validatorLineEdit, 1, 0, 1, 2);
-    validatorGroup->setLayout(validatorLayout);
+    QGridLayout *boardLayout = new QGridLayout;
+    boardLayout->addWidget(validatorLabel, 0, 0);
+    boardLayout->addWidget(validatorComboBox, 0, 1);
+    boardLayout->addWidget(validatorLineEdit, 1, 0, 1, 2);
+    boardGroup->setLayout(boardLayout);
 
     QGridLayout *alignmentLayout = new QGridLayout;
     alignmentLayout->addWidget(alignmentLabel, 0, 0);
@@ -170,8 +170,8 @@ Window::Window()
 
 //! [8]
     QGridLayout *layout = new QGridLayout;
-    layout->addWidget(echoGroup, 0, 0);
-    layout->addWidget(validatorGroup, 1, 0);
+    layout->addWidget(chassisGroup, 0, 0);
+    layout->addWidget(boardGroup, 1, 0);
     layout->addWidget(alignmentGroup, 2, 0);
     layout->addWidget(inputMaskGroup, 0, 1);
     layout->addWidget(accessGroup, 1, 1);
